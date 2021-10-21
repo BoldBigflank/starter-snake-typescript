@@ -14,15 +14,36 @@ export interface MoveResponse {
     shout?: string;
 }
 
-export interface Game {
-    id: string;
-    ruleset: { name: string; version: string };
-    timeout: number;
+export interface RoyaleSettings {
+    shrinkEveryNTurns: number
 }
 
-export interface Coord {
-    x: number;
-    y: number;
+export interface SquadSettings {
+    allowBodyCollisions: boolean;
+    sharedElimination: boolean;
+    sharedHealth: boolean;
+    sharedLength: boolean
+}
+
+export interface RulesetSettings {
+    foodSpawnChance: number;
+    minimumFood: number;
+    hazardDamagePerTurn: number;
+    royale:RoyaleSettings;
+    squad:SquadSettings;
+}
+
+export interface Ruleset {
+    name: string;
+    version: string;
+    settings: RulesetSettings;
+}
+
+export interface Game {
+    id: string;
+    ruleset: Ruleset;
+    timeout: number;
+    source: string;
 }
 
 export interface Battlesnake {
